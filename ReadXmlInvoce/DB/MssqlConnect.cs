@@ -21,7 +21,7 @@ namespace ReadXmlInvoce.DB
                 .WithOne(a => a.Invoice)
                 .HasForeignKey(a => a.invoceNumber)
                 //.IsRequired()
-                .OnDelete(DeleteBehavior.ClientCascade);
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

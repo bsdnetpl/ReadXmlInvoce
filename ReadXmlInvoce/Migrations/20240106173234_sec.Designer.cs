@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReadXmlInvoce.DB;
 
@@ -10,9 +11,11 @@ using ReadXmlInvoce.DB;
 namespace ReadXmlInvoce.Migrations
 {
     [DbContext(typeof(MssqlConnect))]
-    partial class MssqlConnectModelSnapshot : ModelSnapshot
+    [Migration("20240106173234_sec")]
+    partial class sec
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
