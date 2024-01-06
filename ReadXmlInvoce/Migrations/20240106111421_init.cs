@@ -11,7 +11,7 @@ namespace ReadXmlInvoce.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Invoces",
+                name: "Invoices",
                 columns: table => new
                 {
                     numDock = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -19,7 +19,7 @@ namespace ReadXmlInvoce.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invoces", x => x.numDock);
+                    table.PrimaryKey("PK_Invoices", x => x.numDock);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,17 +42,16 @@ namespace ReadXmlInvoce.Migrations
                 {
                     table.PrimaryKey("PK_products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_products_Invoces_invoceNumber",
+                        name: "FK_products_Invoices_invoceNumber",
                         column: x => x.invoceNumber,
-                        principalTable: "Invoces",
+                        principalTable: "Invoices",
                         principalColumn: "numDock");
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_products_invoceNumber",
                 table: "products",
-                column: "invoceNumber",
-                unique: true);
+                column: "invoceNumber");
         }
 
         /// <inheritdoc />
@@ -62,7 +61,7 @@ namespace ReadXmlInvoce.Migrations
                 name: "products");
 
             migrationBuilder.DropTable(
-                name: "Invoces");
+                name: "Invoices");
         }
     }
 }

@@ -11,7 +11,7 @@ using ReadXmlInvoce.DB;
 namespace ReadXmlInvoce.Migrations
 {
     [DbContext(typeof(MssqlConnect))]
-    [Migration("20240105075244_init")]
+    [Migration("20240106111421_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,7 +24,7 @@ namespace ReadXmlInvoce.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ReadXmlInvoce.Models.Invoce", b =>
+            modelBuilder.Entity("ReadXmlInvoce.Models.Invoice", b =>
                 {
                     b.Property<string>("numDock")
                         .HasColumnType("nvarchar(450)");
@@ -35,7 +35,7 @@ namespace ReadXmlInvoce.Migrations
 
                     b.HasKey("numDock");
 
-                    b.ToTable("Invoces");
+                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("ReadXmlInvoce.Models.Product", b =>
@@ -79,27 +79,25 @@ namespace ReadXmlInvoce.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("invoceNumber")
-                        .IsUnique();
+                    b.HasIndex("invoceNumber");
 
                     b.ToTable("products");
                 });
 
             modelBuilder.Entity("ReadXmlInvoce.Models.Product", b =>
                 {
-                    b.HasOne("ReadXmlInvoce.Models.Invoce", "Invoce")
-                        .WithOne("product")
-                        .HasForeignKey("ReadXmlInvoce.Models.Product", "invoceNumber")
+                    b.HasOne("ReadXmlInvoce.Models.Invoice", "Invoice")
+                        .WithMany("product")
+                        .HasForeignKey("invoceNumber")
                         .OnDelete(DeleteBehavior.ClientCascade)
                         .IsRequired();
 
-                    b.Navigation("Invoce");
+                    b.Navigation("Invoice");
                 });
 
-            modelBuilder.Entity("ReadXmlInvoce.Models.Invoce", b =>
+            modelBuilder.Entity("ReadXmlInvoce.Models.Invoice", b =>
                 {
-                    b.Navigation("product")
-                        .IsRequired();
+                    b.Navigation("product");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ReadXmlInvoce.Models;
 using ReadXmlInvoce.Service;
 
 namespace ReadXmlInvoce.Controllers
@@ -18,6 +19,12 @@ namespace ReadXmlInvoce.Controllers
         public ActionResult<bool> AddNewInvoce(string fileName)
         {
             _invoceFromXml.ReadXml(fileName);
+            return true;
+        }
+        [HttpPost("AddNewInvoce2")]
+        public ActionResult<bool> AddNewInvoce2(Invoice invoce)
+        {
+          //  _invoceFromXml.ReadXml(fileName);
             return true;
         }
     }

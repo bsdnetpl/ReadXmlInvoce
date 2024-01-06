@@ -12,6 +12,6 @@
         public double value { set; get; }
         public double valueTax { set; get; }
         public string invoceNumber { set; get; }
-        public Invoce Invoce { set; get; }
+        public Invoice Invoice { set; get; }
     }
 }
